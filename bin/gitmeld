@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "x${DISPLAY}x" != "xx" ]; then 
+	meld ${2} ${5}
+else
+	diff ${2} ${5}
+fi

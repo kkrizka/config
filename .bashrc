@@ -14,15 +14,30 @@ source ${HOME}/dev/setup.sh
 export PATH=${HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${HOME}/lib:${LD_LIBRARY_PATH}
 
+# ROOT
 export ROOTSYS=${HOME}/Sources/root/builddir
 source ${ROOTSYS}/bin/thisroot.sh
 
 alias root='root -l'
 
+# Desktop helpers
 if [ ${DESKTOP_SESSION} == "gnome" ]; then
     alias o='gnome-open'
+else
+    alias o="kde-open"
 fi
+export EDITOR=emacs
 
+# SSH autocomplete
+complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -v "\["`;)" ssh
+
+# Gentoo
+alias emerge="sudo emerge"
+alias euse="sudo euse"
+alias ebuild="sudo ebuild"
+alias layman="sudo layman"
+
+# ATLAS
 function atlas() {
     export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
     export ALRB_localConfigDir=$HOME/localConfig

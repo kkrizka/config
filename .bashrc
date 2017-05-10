@@ -14,6 +14,9 @@ source ${HOME}/dev/setup.sh
 export PATH=${HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${HOME}/lib:${LD_LIBRARY_PATH}
 
+# config in git
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 # ROOT
 export ROOTSYS=${HOME}/Sources/root/builddir
 source ${ROOTSYS}/bin/thisroot.sh

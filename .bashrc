@@ -24,7 +24,9 @@ source ${ROOTSYS}/bin/thisroot.sh
 alias root='root -l'
 
 # Desktop helpers
-if [ ${DESKTOP_SESSION} == "gnome" ]; then
+if [ -z ${DESKTOP_SESSION} ]; then
+    alias o='echo open'
+elif [ ${DESKTOP_SESSION} == "gnome" ]; then
     alias o='gnome-open'
 else
     alias o="kde-open"

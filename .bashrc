@@ -19,9 +19,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # ROOT
 export ROOTSYS=${HOME}/Sources/root/builddir
-source ${ROOTSYS}/bin/thisroot.sh
-
-alias root='root -l'
+if [ -e ${ROOTSYS}/bin/thisroot.sh ]; then
+    source ${ROOTSYS}/bin/thisroot.sh
+    alias root='root -l'
+fi
 
 # Desktop helpers
 if [ -z ${DESKTOP_SESSION} ]; then

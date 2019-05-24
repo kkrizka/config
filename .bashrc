@@ -18,7 +18,7 @@ export LD_LIBRARY_PATH=${HOME}/lib:${LD_LIBRARY_PATH}
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # ROOT
-export ROOTSYS=${HOME}/Sources/root/builddir
+export ROOTSYS=${HOME}/Sources/root/build-v6-16-00
 if [ -e ${ROOTSYS}/bin/thisroot.sh ]; then
     source ${ROOTSYS}/bin/thisroot.sh
     alias root='root -l'
@@ -65,4 +65,16 @@ function atlas() {
     export SVNGRPS=svn+ssh://svn.cern.ch/reps/atlasgroups
 
     export ROOTCORE_NCPUS=10
+}
+
+# Vivado
+function setupVivado()
+{
+    version=${1}
+    if [ ! -e /opt/Xilinx/Vivado/${version}/settings64.sh ]; then
+	echo "unable to find version ${version}"
+	return
+    fi
+    export PS1="(vivado) ${PS1}"
+    source /opt/Xilinx/Vivado/${1}/settings64.sh
 }
